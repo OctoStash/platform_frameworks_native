@@ -155,6 +155,7 @@ private:
     /* ------------------------------------------------------------------------
      * Internal data structures
      */
+    Rect mSwapDirtyRect;
 
     class LayerVector : public SortedVector< sp<Layer> > {
     public:
@@ -410,6 +411,7 @@ private:
 
     void postFramebuffer();
     void drawWormhole(const sp<const DisplayDevice>& hw, const Region& region) const;
+    void setupSwapRect();
 
     /* ------------------------------------------------------------------------
      * Display management
@@ -494,6 +496,8 @@ private:
     nsecs_t mLastTransactionTime;
     bool mBootFinished;
     bool mUseDithering;
+    int mSwapRectEnable;
+
 
     // these are thread safe
     mutable MessageQueue mEventQueue;
